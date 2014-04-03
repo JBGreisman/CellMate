@@ -11,11 +11,4 @@ gunicorn==18.0
 mysql-connector-python==1.1.6
 py2app==0.4.2
 pyOpenSSL==0.7
-python-dateutil==1.2
 virtualenv==1.11.4
-wsgiref==0.1.2
-wxPython==2.8.8.1
-wxPython-common==2.8.8.1
-wxaddons==2.8.8.1
-xattr==0.5
-zope.interface==3.5.1
