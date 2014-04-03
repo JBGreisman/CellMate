@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Welcome to the *updated* Python Flask App!"
+    return "Welcome to the renamed url Python Flask App!"
 
 if __name__ == "__main__":	
 	app.run()
