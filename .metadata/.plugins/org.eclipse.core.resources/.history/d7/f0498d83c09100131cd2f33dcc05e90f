@@ -1,0 +1,18 @@
+/*
+ * regexp.cpp
+ *
+ *  Created on: Feb 9, 2014
+ *      Author: hanasnow
+ */
+
+#include "regexp.h"
+
+regexp::regexp() {
+	// TODO Auto-generated constructor stub
+
+}
+
+regexp::~regexp() {
+	// TODO Auto-generated destructor stub
+}
+

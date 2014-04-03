@@ -1,0 +1,101 @@
+import java.io.IOException;
+
+
+public class decode {
+
+	public static void main(String[] args) {
+		
+		byte[] buf = new byte[4];
+		int inByte;
+		byte b;
+		int bufIndex = 0;
+		int read = -1;
+		int maxChars = 64;
+		int numChars = 0;
+		
+		try {
+			while ((inByte = System.in.read()) != -1) {
+				//if reached padding, handle trailing bits
+				if (inByte == '=') {
+					//TODO
+				}
+				
+				//decode byte
+				if ((b = toBase64(inByte)) > 0) {
+					buf[bufIndex++] = b;
+				}
+				
+				//if have read in 4 characters, output as 3 base64 bytes
+				if (bufIndex == 4) {
+					System.out.write(decodeBytes(buf));
+					bufIndex = 0;
+				}
+			}
+			
+			//handle any trailing bits 
+			//TODO
+			
+		} catch (IOException e) {
+			// fail with no exception 
+		}
+	}
+
+	//takes an int representing an ascii byte and converts it to a 
+	//base 64 byte (between 0x00 and 0x40) or return -1 if invalid char
+	private static byte toBase64(int inByte) {
+		byte b64_A = 0x00;
+		byte b64_a = 0x1a;
+		byte b64_0 = 0x34;
+		byte b64_plus = 0x3e;
+		byte b64_slash = 0x3f;	
+		
+		byte b = (byte) (inByte & 0xff);
+		
+		// '/'
+		if (b == '/')
+			return b64_slash;
+					
+		// '+'
+		if (b == '+')
+			return b64_plus;
+		
+		//digit
+		if (b >= '0' || b <= '9') 
+			return (byte) (b - '0' + b64_0);
+		
+		//lower case letter
+		if (b >= 'a' || b <= 'z') 
+			return (byte) (b - 'a' + b64_a);
+		
+		//upper case letter
+		if (b >= 'A' || b <= 'Z') 
+			return (byte) (b - 'A' + b64_A);
+		
+		//invalid char
+		return -1;	
+	}
+
+	//takes in an array of 3 bytes and converts to 4 encoded bytes
+	private static byte[] encodeBytes(byte[] buf) {
+		byte[] out = new byte[4];
+		
+		//get first 6 bits of byte 0
+		out[0] = toAscii(buf[0] >> 2);
+		
+		//get last 2 bits of byte 0 and first 4 bits of byte 1
+		int b1 = (buf[0] << 4) & 0x30;
+		int b2 = (buf[1] >> 4) & 0x0f;
+		out[1] = toAscii(b1 ^ b2);
+		
+		//get last 4 bits of byte 1 and first 2 bits of byte 2
+		b1 = (buf[1] << 2) & 0x3C;
+		b2 = (buf[2] >> 6) & 0x03;
+		out[2] = toAscii(b1 ^ b2);
+		
+		//get last 6 bytes of byte 2
+		out[3] = toAscii(buf[2] & 0x3F);
+
+		return out;
+	}
+
+}

@@ -1,0 +1,5 @@
+mysql://greisman:CellMate.333@publicdb.cs.princeton.edu/greisman
+publicdb.cs.princeton.edu
+greisman
+greisman
+CellMate.333

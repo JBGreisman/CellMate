@@ -1,0 +1,47 @@
+import java.io.IOException;
+
+
+public class encode {
+
+	public static void main(String[] args) {
+		
+		byte[] buf = new byte[3];
+		int read = -1;
+		int maxChars = 76;
+		int numChars = 0;
+		
+		try {
+			//read input in 24 bit pieces
+			while ((read = System.in.read(buf)) == 3) {
+				//write to output
+				System.out.write(buf);
+				
+				//add newline if max line length is reached
+				numChars += 4;
+				if (numChars == maxChars) {
+					System.out.print('\n');
+					numChars = 0;
+				}
+			}
+			
+			//handle any trailing bits (non-multiples of 24)
+			switch (read) {
+			case -1: case 0:
+				if (numChars > 0)
+					System.out.print('\n');
+				break;
+			case 1:
+				//TODO
+				break;
+			case 2:
+				//TODO
+				break;
+				
+			}
+			
+		} catch (IOException e) {
+			// fail with no exception
+		}
+	}
+
+}

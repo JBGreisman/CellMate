@@ -1,0 +1,113 @@
+import java.io.IOException;
+
+
+public class decode {
+
+	public static void main(String[] args) {
+		
+		byte[] buf = new byte[4];
+		int inByte;
+		byte b;
+		int bufIndex = 0;
+		
+		try {
+			while ((inByte = System.in.read()) != -1
+					&& inByte != '=') {
+				
+				//decode byte
+				if ((b = toBase64(inByte)) > 0) 
+					buf[bufIndex++] = b;
+				
+				//if have read in 4 characters, output as 3 base64 bytes
+				if (bufIndex == 4) {
+					System.out.write(decodeBytes(buf));
+					bufIndex = 0;
+				}
+			}
+			
+			//handle any trailing bits 
+			if (bufIndex > 0) {
+				int i = bufIndex;
+				while (i < 4)
+					buf[i++] = 0x00;
+				byte[] out = decodeBytes(buf);
+				for (i = 0; i <= bufIndex-1; i++)
+					System.out.write(out[i]);
+			}
+			
+			System.out.flush();
+			
+		} catch (IOException e) {
+			// fail with no exception 
+		}
+	}
+
+	//takes an array of 4 "6 bit" bytes and compresses them to 3 bytes
+	private static byte[] decodeBytes(byte[] buf) {
+		byte[] out = new byte[3];
+		
+	//	System.out.println("buf:");
+	//	for (byte b : buf)
+	//		System.out.println(String.format("%6s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0'));
+		
+		//get all 6 bits of byte 0 and first 2 bits of byte 1
+		int b1 = (buf[0] << 2) & 0xfc;
+		int b2 = (buf[1] >> 4) & 0x03;
+		out[0] = (byte) (b1 ^ b2);
+		
+		//get last 4 bits of byte 1 and first 4 bits of byte 2
+		b1 = (buf[1] << 4) & 0xf0;
+		b2 = (buf[2] >> 2) & 0x0f;
+		out[1] = (byte) (b1 ^ b2);
+		
+		//get last 2 bits of byte 2 and all 6 bits of byte 3
+		b1 = (buf[2] << 6) & 0xc0;
+		b2 = buf[3] & 0x3f;
+		out[2] = (byte) (b1 ^ b2);
+		
+	//	System.out.println("out:");
+	//	for (byte b : out)
+	//		System.out.println(String.format("%8s", Integer.toBinaryString(b & 0xFF)).replace(' ', '0'));
+
+		return out;
+	}
+
+	//takes an int representing an ascii byte and converts it to a 
+	//base 64 byte (between 0x00 and 0x40) or return -1 if invalid char
+	private static byte toBase64(int inByte) {
+		byte b64_A = 0x00;
+		byte b64_a = 0x1a;
+		byte b64_0 = 0x34;
+		byte b64_plus = 0x3e;
+		byte b64_slash = 0x3f;	
+		
+		int out = -1;
+		byte b = (byte) (inByte & 0xff);
+		
+		//System.out.println("in: " + (char)b);
+		
+		// '/'
+		if (b == '/')
+			out = b64_slash;
+					
+		// '+'
+		else if (b == '+') 
+			out = b64_plus;
+		
+		//digit
+		else if (b >= '0' && b <= '9')
+			out = b - '0' + b64_0;
+		
+		//lower case letter
+		else if (b >= 'a' && b <= 'z')
+			out = b - 'a' + b64_a;
+		
+		//upper case letter
+		else if (b >= 'A' && b <= 'Z')
+			out = b - 'A' + b64_A;
+		
+		//System.out.println("out: " + (byte)out + ", masked: " + (out& 0x3f) + "(" + String.format("%02X ", (out & 0xff))+  ")");
+		
+		return (byte) out;
+	}
+}
