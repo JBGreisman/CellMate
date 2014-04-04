@@ -17,12 +17,13 @@ class User(db.Model):
   def __init__(self, name):
     self.name = name
 
+users = User.query.all()
+s = ''
+for user in users:
+	s = user.name + ' (' + user.uid + '),'
+
 @app.route("/")
 def hello():
-	users = User.query.all()
-	s = ''
-	for user in users:
-		s = user.name + ' (' + user.uid + '),'
     return "CellMate users: " + s
 
 if __name__ == "__main__":	
