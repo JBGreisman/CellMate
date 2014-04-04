@@ -37,11 +37,7 @@ def create_user(username):
 
 @app.route("/")
 def hello():
-	users = User.query.all()
-	s = ''
-	for user in users:
-		s = user.name + ' (' + user.uid + '),'
-	return s
+    return str(get_uid('Hana'))
     #return "CellMate"
 
 if __name__ == "__main__":
