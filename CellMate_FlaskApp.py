@@ -23,7 +23,7 @@ def hello():
 	s = ''
 	for user in users:
 		s = user.name + ' (' + user.uid + '),'
-    return "CellMate users:"
+    return "CellMate users: " + s
 
 if __name__ == "__main__":	
 	app.run()
