@@ -19,7 +19,11 @@ class User(db.Model):
 
 @app.route("/")
 def hello():
-    return "Welcome to CellMate!"
+	users = User.query.all()
+	s = ''
+	for user in users:
+		s = user.name + ' (' + user.uid + '),'
+    return "CellMate users:"
 
 if __name__ == "__main__":	
 	app.run()
