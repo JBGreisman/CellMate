@@ -7,7 +7,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 #db.app =  app
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+db.init_app(app)
 
 class User(db.Model):
 	__tablename__ = 'USERS'
