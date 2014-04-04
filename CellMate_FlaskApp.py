@@ -2,11 +2,11 @@ import os
 from flask import Flask
 import psycopg2
 from flask.ext.sqlalchemy import SQLAlchemy
-from db_manager import db
+#from db_manager import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db.app =  app
+#db.app =  app
 
 @app.route("/")
 def hello():
