@@ -10,12 +10,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 class User(db.Model):
-  __tablename__ = 'USERS'
-  uid = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(50), unique = True)
-   
-  def __init__(self, name):
-    self.name = name
+	__tablename__ = 'USERS'
+	uid = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(50), unique = True)
+
+	def __init__(self, name):
+		self.name = name
 
 #gets the uid associated with the username, or None if no user exists
 def get_uid(username):
@@ -44,5 +44,5 @@ def hello():
 	return s
     #return "CellMate"
 
-if __name__ == "__main__":	
+if __name__ == "__main__":
 	app.run()
