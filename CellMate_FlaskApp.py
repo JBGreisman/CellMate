@@ -17,16 +17,32 @@ class User(db.Model):
   def __init__(self, name):
     self.name = name
 
-print 'begin query'
-users = User.query.all()
-s = ''
-for user in users:
-	s = user.name + ' (' + user.uid + '),'
-print s
+#gets the uid associated with the username, or None if no user exists
+def get_uid(username):
+	user = User.query.filter_by(name = username).first()
+    if user:
+    	return user.uid
+    else:
+    	return None
+
+#creates user with the given username if it doesn't already exists
+def create_user(username):
+	#can't add duplicate users
+	if get_uid(username):
+		return False
+    db.session.add(User(username))
+    db.session.commit()
+    return True
+
 
 @app.route("/")
 def hello():
-    return "CellMate"
+	users = User.query.all()
+	s = ''
+	for user in users:
+		s = user.name + ' (' + user.uid + '),'
+	return s
+    #return "CellMate"
 
 if __name__ == "__main__":	
 	app.run()
