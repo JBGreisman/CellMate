@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def hello():
-    return "Welcome to CellMate!"
+    return "Welcome to CellMate! (database not crashing thae app!)"
 
 if __name__ == "__main__":	
 	app.run()
