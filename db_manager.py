@@ -11,6 +11,7 @@ class User(db.Model):
 		self.name = name
 
 	#gets the uid associated with the username, or None if no user exists
+	@staticmethod
 	def get_uid(username):
 		user = User.query.filter_by(name = username).first()
 		if user:
@@ -19,6 +20,7 @@ class User(db.Model):
 			return None
 
 	#creates user with the given username if it doesn't already exists
+	@staticmethod
 	def create_user(username):
 		#can't add duplicate users
 		if get_uid(username):
