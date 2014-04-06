@@ -10,19 +10,19 @@ class User(db.Model):
 	def __init__(self, name):
 		self.name = name
 
-#gets the uid associated with the username, or None if no user exists
-def get_uid(username):
-	user = User.query.filter_by(name = username).first()
-	if user:
-		return user.uid
-	else:
-		return None
+	#gets the uid associated with the username, or None if no user exists
+	def get_uid(username):
+		user = User.query.filter_by(name = username).first()
+		if user:
+			return user.uid
+		else:
+			return None
 
-#creates user with the given username if it doesn't already exists
-def create_user(username):
-	#can't add duplicate users
-	if get_uid(username):
-		return False
-	db.session.add(User(username))
-	db.session.commit()
-	return True
+	#creates user with the given username if it doesn't already exists
+	def create_user(username):
+		#can't add duplicate users
+		if get_uid(username):
+			return False
+		db.session.add(User(username))
+		db.session.commit()
+		return True

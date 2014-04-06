@@ -1,16 +1,15 @@
 import os
 from flask import Flask
 import psycopg2
-import db_manager as dbm
+from db_manager import db, User
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-#db.app =  app
-dbm.db.init_app(app)
+db.init_app(app)
 
 @app.route("/")
 def hello():
-    return "Hello, Hana. Your id is " + str(dbm.get_uid('Hana'))
+    return "Hello, Hana. Your id is " + str(User.get_uid('Hana') + '!')
 
 if __name__ == "__main__":
 	app.run()
