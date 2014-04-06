@@ -39,9 +39,9 @@ class Data(db.Model):
 	image = db.Column(db.LargeBinary)
 	thresh_image = db.Column(db.LargeBinary)
 
-	def __init__(self, uid, date, count, image, thresh_image):
+	def __init__(self, uid, count, image, thresh_image):
 		self.uid = uid
-		self.date = date
+		self.date = datetime.date.today()
 		self.count = count
 		self.image = image
 		self.thresh_image = thresh_image
