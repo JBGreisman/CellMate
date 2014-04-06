@@ -29,7 +29,7 @@ class User(db.Model):
 		db.session.commit()
 		return True
 
-class Data(db.Modlel):
+class Data(db.Model):
 	__tablename__ = 'DATA'
 	uid = db.Column(db.Integer)
 	date = db.Column(db.Date)
