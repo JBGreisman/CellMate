@@ -31,6 +31,7 @@ class User(db.Model):
 
 class Data(db.Model):
 	__tablename__ = 'DATA'
+	key = db.Column(db.Integer, primary_key = True)
 	uid = db.Column(db.Integer)
 	date = db.Column(db.Date)
 	count = db.Column(db.Integer)
