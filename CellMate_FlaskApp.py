@@ -9,7 +9,8 @@ db.init_app(app)
 
 @app.route("/")
 def hello():
-    return "Hello, Hana! Your id is " + str(User.get_uid('Hana')) + '!'
+  #  return "Hello, Hana! Your id is " + str(User.get_uid('Hana')) + '!'
+  return "hello"
 
 if __name__ == "__main__":
 	app.run()
