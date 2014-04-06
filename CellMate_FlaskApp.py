@@ -12,8 +12,11 @@ def hello():
 	user = 'Hana'
 	uid = User.get_uid(user)
 	data = Data.get_user_data(uid)
+	total = 0
+	for row in data:
+		total = total + row.count
 
-	return 'Hello ' + user + '! You have ' + str(len(data)) + ' count(s)'
+	return 'Hello ' + user + '! You have counted ' + str(total) + ' colonies'
 
 if __name__ == "__main__":
 	app.run()
