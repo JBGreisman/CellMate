@@ -1,5 +1,7 @@
 distribute
 psycopg2
+opencv
+numpy
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
 Jinja2==2.7.2
