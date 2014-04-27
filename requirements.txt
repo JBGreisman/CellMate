@@ -1,4 +1,4 @@
-setuptools==0.9.8
+setuptools==0.6.45
 psycopg2
 pyopencv==2.1.0.wr1.2.0
 numpy
