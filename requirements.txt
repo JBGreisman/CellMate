@@ -1,6 +1,5 @@
 distribute
 psycopg2
-opencv_python
 numpy
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
