@@ -1,6 +1,6 @@
-distribute==0.6.45
+distribute
 psycopg2
-pyopencv==2.1.0.wr1.2.0
+opencv-python
 numpy
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
