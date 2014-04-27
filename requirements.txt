@@ -13,4 +13,4 @@ gunicorn==18.0
 mysql-connector-python==1.1.6
 py2app==0.4.2
 pyOpenSSL==0.7
-virtualenv==1.11.4
+virtualenv==1.6.4
