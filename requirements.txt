@@ -1,6 +1,5 @@
-setuptools
+distribute
 psycopg2
-pyopencv==2.1.0.wr1.2.0
 numpy
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
