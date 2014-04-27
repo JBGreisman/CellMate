@@ -1,5 +1,4 @@
 distribute
-git+git://github.com/Itseez/opencv.git
 psycopg2
 numpy
 Flask==0.10.1
