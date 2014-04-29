@@ -1,0 +1,17 @@
+/*
+ * regexp.h
+ *
+ *  Created on: Feb 9, 2014
+ *      Author: hanasnow
+ */
+
+#ifndef REGEXP_H_
+#define REGEXP_H_
+
+class regexp {
+public:
+	regexp();
+	virtual ~regexp();
+};
+
+#endif /* REGEXP_H_ */
