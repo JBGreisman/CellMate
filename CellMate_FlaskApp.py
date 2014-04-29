@@ -19,12 +19,14 @@ def hello():
 
 	#return 'Hello ' + user + '! You have counted ' + str(total) + ' colonies'
 
-	img =  open('scrren1.png', 'r').read()
+	img =  open('screen1.png', 'r').read()
 	(count, thresh_img) = countColonies.processImage(img, 1, 1)
 	return 'colonies counted: ' + count
 
-
+#@app.route('/count/<int:x>')
+#def show_post(post_id):
 
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
+	#app.run()
