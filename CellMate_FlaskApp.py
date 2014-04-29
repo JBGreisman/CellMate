@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, Response, json
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
@@ -28,7 +28,8 @@ def hello():
 def count_colonies(x, y, image):
 	open('img.png', 'wb').write(bytearray(image))
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	return jsonify({ 'count': count, 'image': thresh_img})
+	#return jsonify({ 'count': count, 'image': thresh_img})
+	return Response(json.dumps({ 'count': count, 'image': thresh_img}),  mimetype='application/json')
 
 
 if __name__ == "__main__":
