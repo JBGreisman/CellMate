@@ -5,8 +5,8 @@ from db_manager import db, User, Data
 import countColonies
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db.init_app(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+#db.init_app(app)
 
 @app.route("/")
 def hello():
