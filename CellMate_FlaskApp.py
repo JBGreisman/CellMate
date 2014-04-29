@@ -28,8 +28,6 @@ def hello():
 def count_colonies(x, y, image):
 	open('img.png', 'wb').write(bytearray(image))
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	#return jsonify({ 'count': count, 'image': thresh_img})
-	#return Response(json.dumps({ 'count': count, 'image': thresh_img}),  mimetype='application/json')
 	return Response(thresh_img, status=count, mimetype='image/png')
 
 if __name__ == "__main__":
