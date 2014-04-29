@@ -1,1 +1,0 @@
-web: gunicorn CellMate_FlaskApp:app
