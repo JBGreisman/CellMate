@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
@@ -21,15 +21,15 @@ def hello():
 	
 
 	imgBytes = open('screen1.png', 'rb').read()
-	return count_colonies(1,1,imgBytes)
+	count_colonies(1,1,imgBytes)
+	return 'done'
 
 @app.route('/count/<int:x>/<int:y>/<image>')
 def count_colonies(x, y, image):
 	open('img.png', 'wb').write(bytearray(image))
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	return count
+	return jsonify({ 'count': count, 'image': thresh_img})
 
 
 if __name__ == "__main__":
 	app.run(debug=True)
-	#app.run()
