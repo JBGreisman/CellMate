@@ -1,4 +1,5 @@
 distribute
+opencv-python
 psycopg2
 numpy
 Flask==0.10.1
