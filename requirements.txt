@@ -1,16 +1,6 @@
-distribute
 psycopg2
-numpy
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
 Jinja2==2.7.2
-MarkupSafe==0.19
-MySQL-python==1.2.5
-PyRSS2Gen==1.0.0
-SQLAlchemy==0.9.4
 Werkzeug==0.9.4
 gunicorn==18.0
-mysql-connector-python==1.1.6
-py2app==0.4.2
-pyOpenSSL==0.7
-virtualenv==1.11.4
