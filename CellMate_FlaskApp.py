@@ -18,11 +18,15 @@ def hello():
 	#	total = total + row.count
 
 	#return 'Hello ' + user + '! You have counted ' + str(total) + ' colonies'
-	return 'colonies counted: ' + count_colonies(1,1)
+	
 
-@app.route('/count/<int:x>/<int:y>')
-def count_colonies(x, y):
-	(count, thresh_img) = countColonies.processImage('screen1.png', x, y)
+	imgBytes = open('screen1.png', 'rb').read()
+	return imgBytes
+
+@app.route('/count/<int:x>/<int:y>/<image>')
+def count_colonies(x, y, image):
+	open('img.png', 'wb').write(bytearray(image))
+	(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	return count
 
 
