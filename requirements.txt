@@ -1,5 +1,5 @@
 distribute
-dev
+python-dev
 psycopg2
 numpy
 Flask==0.10.1
