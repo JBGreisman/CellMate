@@ -21,7 +21,7 @@ def hello():
 	
 
 	imgBytes = open('screen1.png', 'rb').read()
-	return imgBytes
+	return count_colonies(1,1,imgBytes)
 
 @app.route('/count/<int:x>/<int:y>/<image>')
 def count_colonies(x, y, image):
