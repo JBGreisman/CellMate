@@ -11,9 +11,9 @@ conn = httplib.HTTPConnection('cellmate.herokuapp.com')
 #conn.request('GET','/count',params)
 x = 52
 y = 207
-url_string = '/count/{0}/{1}/{2}'.format(52,207,encoded_img)
-#print url_string
-conn.request('GET', url_string, img)
+url_string = '/count/{0}/{1}'.format(52,207)
+print url_string
+conn.request('GET', url_string, encoded_img)
 res = conn.getresponse()
 print res.status
 data = res.read()

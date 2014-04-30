@@ -31,7 +31,7 @@ def hello():
 #	return Response(thresh_img, status=count, mimetype='image/png')
 
 #@app.route('/count', methods=['GET'])
-@app.route('/count/<int:x>/<int:y>/<image>', methods=['GET'])
+@app.route('/count/<int:x>/<int:y>', methods=['GET'])
 def count_colonies(x,y,image):
 	#x = request.args.get('x')
 	#y = request.args.get('y')
