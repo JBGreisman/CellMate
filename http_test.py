@@ -9,6 +9,7 @@ conn = httplib.HTTPConnection('cellmate.herokuapp.com')
 x = 52
 y = 207
 url_string = '/count/{0}/{1}'.format(52,207)
+print url_string
 conn.request('GET', url_string)
 res = conn.getresponse()
 #print res.status
