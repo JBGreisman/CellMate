@@ -20,14 +20,15 @@ def hello():
 	#return 'Hello ' + user + '! You have counted ' + str(total) + ' colonies'
 	
 
-	imgBytes = open('screen1.png', 'rb').read()
-	count_colonies(1,1,imgBytes)
-	return 'done'
+	imgBytes = open('plate.png', 'rb').read()
+	resp = count_colonies(52,207,imgBytes)
+	return resp.status
 
 @app.route('/count/<int:x>/<int:y>/<image>')
 def count_colonies(x, y, image):
 	open('img.png', 'wb').write(bytearray(image))
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
+	open('thresh_img.png', 'w').write(thresh_img)
 	return Response(thresh_img, status=count, mimetype='image/png')
 
 if __name__ == "__main__":
