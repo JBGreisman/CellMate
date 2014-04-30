@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Response
+from flask import Flask, Response, request
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
