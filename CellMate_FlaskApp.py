@@ -32,14 +32,14 @@ def hello():
 
 @app.route('/count', methods=['GET'])
 def count_colonies():
-	x = request.args.get('x')
-	y = request.args.get('y')
+	#x = request.args.get('x')
+	#y = request.args.get('y')
 	#image = request.args.get('image', '')
 	#open('img.png', 'w').write(image.decode('utf-8'))
 	#open('img.png', 'w').write(image)
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	#return Response(thresh_img, status=count, mimetype='image/png')
-	return x+y
+	return request.args.keys()
 
 
 if __name__ == "__main__":
