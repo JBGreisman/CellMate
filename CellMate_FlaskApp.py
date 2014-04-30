@@ -42,8 +42,7 @@ def count_colonies(x,y):
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	#return Response(thresh_img, status=count, mimetype='image/png')
 	#r = 'failed'
-	#x = -1
-	#y = -1
+
 	#try:
 		#r = request.args.keys()
 	#	r = request.data	
@@ -55,17 +54,15 @@ def count_colonies(x,y):
 	#		elif (params[0] == 'x'):
 	#			x = int(params[1])
 
-	#return x + y
-	#try:
-	#	r = request.data
-	#	resp = Response(r, mimetype='image/png')
-	#except RuntimeError as e:
-	#	return "runtime error({0}): {1}".format(e.errno, e.strerror)
-	#except:
-	#	return 'exception'
-	#return resp
+	try:
+		r = request.data
+		resp = Response(r, status=x+y, mimetype='image/png')
+	except RuntimeError as e:
+		return "runtime error({0}): {1}".format(e.errno, e.strerror)
+	except:
+		return 'exception'
+	return resp
 	#return str(r)
-	return 'request recieved ' 
 
 
 if __name__ == "__main__":
