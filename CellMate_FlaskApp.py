@@ -42,7 +42,7 @@ def count_colonies():
 	#return Response(thresh_img, status=count, mimetype='image/png')
 	r = 'failed'
 	try:
-		r = request.args.keys()
+		r = request.values.keys()
 	except RuntimeError as e:
 		return "runtime error({0}): {1}".format(e.errno, e.strerror)
 	except:
