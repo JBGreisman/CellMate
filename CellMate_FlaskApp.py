@@ -24,12 +24,21 @@ def hello():
 	resp = count_colonies(52,207,imgBytes)
 	return resp.status
 
-@app.route('/count/<int:x>/<int:y>/<image>')
-def count_colonies(x, y, image):
-	open('img.png', 'wb').write(bytearray(image))
+#@app.route('/count/<int:x>/<int:y>/<image>')
+#def count_colonies(x, y, image):
+#	open('img.png', 'wb').write(bytearray(image))
+#	(count, thresh_img) = countColonies.processImage('img.png', x, y)
+#	return Response(thresh_img, status=count, mimetype='image/png')
+
+@app.route('/count', methods=['GET'])
+def count_colonies():
+	x = request.args.get('x', '')
+	y = request.args.get('y', '')
+	image = request.args.get('image', '')
+	open('img.png', 'w').write(image.decode('utf-8'))
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	open('thresh_img.png', 'w').write(thresh_img)
 	return Response(thresh_img, status=count, mimetype='image/png')
+
 
 if __name__ == "__main__":
 	app.run(debug=True)
