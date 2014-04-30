@@ -1,21 +1,19 @@
 import httplib, urllib, base64
 
-#img = open('plate.png', 'r').read()
-img = open("plate.png", "rb").read()
-encoded_img = base64.b64encode(img)
-#params = urllib.urlencode({'@x': 52, '@y': 207, '@image': img})
-#params = urllib.urlencode({'x': 52, 'y': 207})
-#params = urllib.urlencode({'image'img)
-#print params
-conn = httplib.HTTPConnection('cellmate.herokuapp.com')
-#conn.request('GET','/count',params)
+#hard-coded params (can be any coords and png image)
 x = 52
 y = 207
-url_string = '/count/{0}/{1}'.format(52,207)
-print url_string
+img = open("plate.png", "rb").read()
+
+#send request
+encoded_img = base64.b64encode(img)
+conn = httplib.HTTPConnection('cellmate.herokuapp.com')
+url_string = '/count/{0}/{1}'.format(x,y)
 conn.request('GET', url_string, encoded_img)
-res = conn.getresponse()
-print res.status
-data = res.read()
-#open('thresh_plate.png', 'w').write(data)
-print data
+
+#get response
+response = conn.getresponse()
+count = response.status
+thresh_img = base64.b64decode(response.read())
+open('thresh_plate.png', 'wb').write(thresh_img)
+print 'threshholded image saved to thresh_plate.png, count = ' + str(count)

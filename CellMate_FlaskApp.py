@@ -3,6 +3,7 @@ from flask import Flask, Response, request
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
+import base64
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -18,52 +19,21 @@ def hello():
 	#	total = total + row.count
 
 	#return 'Hello ' + user + '! You have counted ' + str(total) + ' colonies'
-	
+	return 'hello, world'
+	#imgBytes = open('plate.png', 'rb').read()
+	#resp = count_colonies(52,207,imgBytes)
+	#return resp.status
 
-	imgBytes = open('plate.png', 'rb').read()
-	resp = count_colonies(52,207,imgBytes)
-	return resp.status
 
-#@app.route('/count/<int:x>/<int:y>/<image>')
-#def count_colonies(x, y, image):
-#	open('img.png', 'wb').write(bytearray(image))
-#	(count, thresh_img) = countColonies.processImage('img.png', x, y)
-#	return Response(thresh_img, status=count, mimetype='image/png')
-
-#@app.route('/count', methods=['GET'])
 @app.route('/count/<int:x>/<int:y>', methods=['GET'])
 def count_colonies(x,y):
-	#x = request.args.get('x')
-	#y = request.args.get('y')
-	#x = request.args['x']
-	#image = request.args.get('image', '')
-	#open('img.png', 'w').write(image.decode('utf-8'))
-	#open('img.png', 'w').write(image)
+	image = base64.b64decode(request.data)
+	open('img.png', 'wb').write(image)
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	#return Response(thresh_img, status=count, mimetype='image/png')
-	#r = 'failed'
-
-	#try:
-		#r = request.args.keys()
-	#	r = request.data	
-	#	args = r.split('&')
-	#	for arg in args:
-	#		params = args.split('=')
-	#		if (params[0] == 'x'):
-	#			x = int(params[1])
-	#		elif (params[0] == 'x'):
-	#			x = int(params[1])
-
-	try:
-		#return str(x+y)
-		r = request.data
-		resp = Response(r, status=x+y, mimetype='image/png')
-	except RuntimeError as e:
-		return "runtime error({0}): {1}".format(e.errno, e.strerror)
-	except:
-		return 'exception'
+	enc_thresh_img = base64.b64encode(open('img.png', 'rb').read())
+	count = x + y
+	resp = Response(enc_thresh_img, status=count, mimetype='image/png')
 	return resp
-	#return str(r)
 
 
 if __name__ == "__main__":
