@@ -32,7 +32,7 @@ def hello():
 
 #@app.route('/count', methods=['GET'])
 @app.route('/count/<int:x>/<int:y>', methods=['GET'])
-def count_colonies(x,y,image):
+def count_colonies(x,y):
 	#x = request.args.get('x')
 	#y = request.args.get('y')
 	#x = request.args['x']
