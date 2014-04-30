@@ -31,7 +31,7 @@ def hello():
 #	return Response(thresh_img, status=count, mimetype='image/png')
 
 #@app.route('/count', methods=['GET'])
-@app.route('/count/<x>/<y>', methods=['GET'])
+@app.route('/count/<int:x>/<int:y>/<image>', methods=['GET'])
 def count_colonies(x,y):
 	#x = request.args.get('x')
 	#y = request.args.get('y')
@@ -55,8 +55,8 @@ def count_colonies(x,y):
 	#			x = int(params[1])
 
 	try:
-		r = request.data
-		resp = Response(r, status=x+y, mimetype='image/png')
+		#r = request.data
+		resp = Response(image, status=x+y, mimetype='image/png')
 	except RuntimeError as e:
 		return "runtime error({0}): {1}".format(e.errno, e.strerror)
 	except:
