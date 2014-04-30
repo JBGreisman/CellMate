@@ -5,7 +5,7 @@ params = urllib.urlencode({'@x': 52, '@y': 207, '@image': img})
 conn = httplib.HTTPConnection('cellmate.herokuapp.com')
 conn.request('GET','/count',params)
 res = conn.getresponse()
-print res.status
+#print res.status
 data = res.read()
-open('thresh_plate.png', 'w').write(data)
+#open('thresh_plate.png', 'w').write(data)
 print data
