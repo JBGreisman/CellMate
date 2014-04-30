@@ -32,15 +32,14 @@ def count_colonies(x,y):
 	open('img.png', 'wb').write(image)
 
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)
-	return 'request recieved'
 	#cv2.imwrite('thresh_img.png', thresh_img)
 
-	#enc_thresh_img = base64.b64encode(open('img.png', 'rb').read())
+	enc_thresh_img = base64.b64encode(open('img.png', 'rb').read())
 	#enc_thresh_img = base64.b64encode(image)
 	#enc_thresh_img = image
 	#enc_thresh_img = base64.b64encode(open('thresh_img.png', 'rb').read())
-	#resp = Response(enc_thresh_img, status=count, mimetype='image/png')
-	#return resp
+	resp = Response(enc_thresh_img, status=count, mimetype='image/png')
+	return resp
 
 
 if __name__ == "__main__":
