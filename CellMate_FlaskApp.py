@@ -4,7 +4,7 @@ import psycopg2
 from db_manager import db, User, Data
 import countColonies
 import base64
-import cv2
+#import cv2
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
