@@ -40,14 +40,15 @@ def count_colonies():
 	#open('img.png', 'w').write(image)
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	#return Response(thresh_img, status=count, mimetype='image/png')
-	r = 'failed'
-	try:
-		r = request.args.keys()
-	except RuntimeError as e:
-		return "runtime error({0}): {1}".format(e.errno, e.strerror)
-	except:
-		return 'exception'
-	return r
+	#r = 'failed'
+	#try:
+	#	r = request.args.keys()
+	#except RuntimeError as e:
+	#	return "runtime error({0}): {1}".format(e.errno, e.strerror)
+	#except:
+	#	return 'exception'
+	#return r
+	return 'request recieved'
 
 
 if __name__ == "__main__":
