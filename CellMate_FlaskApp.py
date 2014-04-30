@@ -31,6 +31,8 @@ def count_colonies(x,y):
 	image = request.data
 	open('img.png', 'wb').write(image)
 
+	#WORKED WITHOUT RUNNING GABES CODE AND USING  image DIRECTLY INSTEAD OF READING THE FILE
+
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	#cv2.imwrite('thresh_img.png', thresh_img)
 

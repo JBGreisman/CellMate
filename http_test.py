@@ -3,7 +3,7 @@ import httplib, urllib, base64
 #hard-coded params (can be any coords and png image)
 x = 52
 y = 207
-img = open("plate.png", "rb").read()
+img = open("plate.png", "rb").read() #read binary, not regular
 
 #send request
 #encoded_img = base64.b64encode(img)
