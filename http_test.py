@@ -14,8 +14,9 @@ conn.request('GET', url_string, encoded_img)
 #get response
 response = conn.getresponse()
 count = response.status
+print count
 enc_thresh_img = response.read()
+print enc_thresh_img
 thresh_img = base64.b64decode(enc_thresh_img)
 open('thresh_plate.png', 'wb').write(thresh_img)
 print 'threshholded image saved to thresh_plate.png, count = ' + str(count)
-#print enc_thresh_img
