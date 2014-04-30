@@ -4,7 +4,7 @@ import psycopg2
 from db_manager import db, User, Data
 import countColonies
 import base64
-#import cv2
+import cv2
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -28,7 +28,8 @@ def hello():
 
 @app.route('/count/<int:x>/<int:y>', methods=['GET'])
 def count_colonies(x,y):
-	image = base64.b64decode(request.data)
+	#image = base64.b64decode(request.data)
+	image = request.data
 	open('img.png', 'wb').write(image)
 
 	#(count, thresh_img) = countColonies.processImage('img.png', x, y)

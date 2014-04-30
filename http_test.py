@@ -6,7 +6,8 @@ y = 207
 img = open("plate.png", "rb").read()
 
 #send request
-encoded_img = base64.b64encode(img)
+#encoded_img = base64.b64encode(img)
+encoded_img = img
 conn = httplib.HTTPConnection('cellmate.herokuapp.com')
 url_string = '/count/{0}/{1}'.format(x,y)
 conn.request('GET', url_string, encoded_img)
