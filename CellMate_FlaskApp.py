@@ -55,17 +55,17 @@ def count_colonies(x,y):
 	#		elif (params[0] == 'x'):
 	#			x = int(params[1])
 
-	return x + y
-	try:
-		r = request.data
-		resp = Response(r, mimetype='image/png')
-	except RuntimeError as e:
-		return "runtime error({0}): {1}".format(e.errno, e.strerror)
-	except:
-		return 'exception'
-	return resp
+	#return x + y
+	#try:
+	#	r = request.data
+	#	resp = Response(r, mimetype='image/png')
+	#except RuntimeError as e:
+	#	return "runtime error({0}): {1}".format(e.errno, e.strerror)
+	#except:
+	#	return 'exception'
+	#return resp
 	#return str(r)
-	#return 'request recieved ' 
+	return 'request recieved ' 
 
 
 if __name__ == "__main__":
