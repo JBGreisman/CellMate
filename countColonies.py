@@ -15,7 +15,7 @@ TOLERANCE = 50
 
 def count(pic, px, myX, myY):
     im = cv2.imread(pic)
-    im = cv2.resize(im,(400,400))
+    #im = cv2.resize(im,(400,400))
     
     hsv = cv2.cvtColor(im,cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, np.array([px[0]-TOLERANCE,px[1]-TOLERANCE,px[2]-TOLERANCE]), np.array([px[0]+TOLERANCE,px[1]+TOLERANCE,px[2]+TOLERANCE]))
@@ -82,7 +82,7 @@ def count(pic, px, myX, myY):
 
 def thresh(picture, myX, myY):
     	img = cv2.imread(picture)
-	img = cv2.resize(img,(400,400))
+	#img = cv2.resize(img,(400,400))
 	hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	px = hsv[myX,myY]
