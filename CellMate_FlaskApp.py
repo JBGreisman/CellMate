@@ -3,7 +3,6 @@ from flask import Flask, Response, request
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
-import base64
 import cv2
 
 app = Flask(__name__)
@@ -37,6 +36,7 @@ def count_colonies(x,y):
 	#cv2.imwrite('thresh_img.png', thresh_img)
 
 	#return count
+	count = x+y
 	enc_thresh_img = open('img.png', 'rb').read()
 	#enc_thresh_img = open('thresh_img.png', 'rb').read()
 	resp = Response(enc_thresh_img, status=count, mimetype='image/png')
