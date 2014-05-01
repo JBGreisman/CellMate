@@ -39,6 +39,7 @@ def count_colonies(x,y):
 	#enc_thresh_img = open('thresh_img.png', 'rb').read()
 	#resp = Response(enc_thresh_img, status=count, mimetype='image/png')
 	#return resp
+	return jsonify(img=enc_thresh_img)
 	return jsonify(count=count)
 	return (enc_thresh_img, count)
 
