@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Response, request
+from flask import Flask, Response, request, jsonify
 import psycopg2
 from db_manager import db, User, Data
 import countColonies
@@ -30,8 +30,6 @@ def count_colonies(x,y):
 	image = request.data
 	open('img.png', 'wb').write(image)
 
-	#WORKED WITHOUT RUNNING GABES CODE AND USING  image DIRECTLY INSTEAD OF READING THE FILE
-
 	(count, thresh_img) = countColonies.processImage('img.png', x, y)
 	#cv2.imwrite('thresh_img.png', thresh_img)
 
@@ -41,7 +39,7 @@ def count_colonies(x,y):
 	#enc_thresh_img = open('thresh_img.png', 'rb').read()
 	#resp = Response(enc_thresh_img, status=count, mimetype='image/png')
 	#return resp
-	return count
+	return jsonify(count=count)
 	return (enc_thresh_img, count)
 
 
